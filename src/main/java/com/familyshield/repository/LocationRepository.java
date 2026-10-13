@@ -6,4 +6,5 @@ import java.util.Optional;
 
 public interface LocationRepository extends JpaRepository<Location, Long> {
     Optional<Location> findTopByDeviceIdOrderByRecordedAtDesc(Long deviceId);
+    void deleteByDeviceId(Long deviceId);
 }

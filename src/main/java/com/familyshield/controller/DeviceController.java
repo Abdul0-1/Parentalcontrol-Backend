@@ -164,6 +164,8 @@ public class DeviceController {
             return ResponseEntity.notFound().build();
         }
 
+        // Delete location history first to avoid FK constraint violation
+        locations.deleteByDeviceId(deviceId);
         devices.delete(device);
         return ResponseEntity.ok(Map.of("message", "Device unpaired"));
     }
