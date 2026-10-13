@@ -10,6 +10,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import jakarta.transaction.Transactional;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -150,6 +151,7 @@ public class DeviceController {
         return ResponseEntity.ok(result);
     }
 
+    @Transactional
     @DeleteMapping("/devices/{deviceId}")
     public ResponseEntity<?> unpair(
             @PathVariable Long deviceId,
